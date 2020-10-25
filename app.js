@@ -11,6 +11,8 @@ const { User, validate } = require('./trash2');
 const log = require('./log');
 
 
+
+
 //var MongoClient = require('mongodb').MongoClient;
 //var url = "mongodb://localhost:27017/";
 //
@@ -74,42 +76,14 @@ app.get('/', function (req, res) {
            // save the new user
            newUser.save(function(err,newUser){
                if(err){console.error(err);}
-               // console.error is same, but in stderr form
-               else{
-                   console.log('new user saved successfully');
-                   console.log(newUser);
-               }
-           });
-           res.sendFile(path.join(__dirname, '../gareebo ke buffet_2', 'stock.html'));
-
-       }
-   });*/
+      */
        
       // console.log(myobj);
 
        //MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, function (err, db) {
          //if (err)
            //throw err;
-         //var dbo = db.db("mydb");
-
-         //dbo.collection("customers").insertOne(myobj, function (err, res) {
-           //if (err)
-             //throw err;
-           //else {
-           
-             //console.log("1 document inserted");
-           //}
-
-
-
-           //db.close();
-           
-
-
-
-         //});
-
-       //});
+        
       
 
     
@@ -146,3 +120,4 @@ app.get('/', function (req, res) {
     });
   });
 });*/
+

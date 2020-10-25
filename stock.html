@@ -46,6 +46,7 @@
     <title>Document</title>
 </head>
 <body>
+    
     <label for="company">Enter company symbol
         (like AAPL for APPLE)
     </label>
@@ -53,6 +54,9 @@
     <button id="search_btn">search</button><br>
     <canvas id ="myChart" width ="800" heigth ="400"></canvas><br>
     <button id ="add_fav">addtofav</button>
+
+    
+    
     <p id = "stockprice"></p>
 <script>
     $("#add_fav").hide();
@@ -63,7 +67,23 @@
              next(symbol);
         })
         $("#add-fav").click(function() {
-           // <p>suprise motherfucker</p>
+
+            var myModule = require('./log');
+
+// name is a member of myModule due to the export above
+var Email = myModule.Email;
+console.log(Email);
+            db.getCollection('User').findOneAndUpdate(
+   { email: Email }, 
+   { $push: { 
+             favourites: {
+                symbol,
+               }  
+           } 
+   },function(err, doc) {
+        if (err);
+        throw err;
+    })
         })
     async function next(symbol){
         await chartit();

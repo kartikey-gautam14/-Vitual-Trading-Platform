@@ -5,7 +5,7 @@ const { User } = require('./trash2');
 const express = require('express');
 const router = express.Router();
 var path =require('path');
-
+var Email;
   
  
 
@@ -25,7 +25,7 @@ router.post('/', async (req, res) => {
  
     // Then validate the Credentials in MongoDB match
     // those provided in the request
-    console.log(typeof(req.body.password));
+    
 
     if(req.body.passord==user.password)
     //const validPassword = await bcrypt.compare(req.body.password, user.password);
@@ -34,6 +34,10 @@ router.post('/', async (req, res) => {
     }
  
     console.log("done");
+    Email=req.body.email;
+    exports.Email=Email;
+
+    
     res.sendFile(path.join(__dirname, '../gareebo ke buffet_2', 'stock.html'));
 
 });
@@ -47,3 +51,4 @@ function validate(req) {
     return schema.validate(req);
 }
 module.exports = router;
+
