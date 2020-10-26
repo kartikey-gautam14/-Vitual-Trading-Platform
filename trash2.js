@@ -21,11 +21,12 @@ const User = mongoose.model('User', new mongoose.Schema({
         minlength: 5,
         maxlength: 1024
     },
-    favourites: {
-        type: Array,
+    favourites: [ String,
+    ]
+        
         
 
-    }
+    
 }));
  
 function validateUser(user) {
