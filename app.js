@@ -16,7 +16,7 @@ const log = require('./log');
 //var MongoClient = require('mongodb').MongoClient;
 //var url = "mongodb://localhost:27017/";
 //
-mongoose.connect('mongodb://localhost/mongo-games',{ useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
+mongoose.connect('mongodb://localhost/mongo-games',{ useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false  })
     .then(() => console.log('Now connected to MongoDB!'))
     .catch(err => console.error('Something went wrong', err));
 //
@@ -37,6 +37,8 @@ app.use(express.urlencoded({extended : true}));
 app.use('/registration', users);
 app.use('/login', log);
 
+app.use("/static", express.static('./static/'));
+
 app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname, '../gareebo ke buffet_2','register.html'));
    });
@@ -44,6 +46,27 @@ app.get('/', function (req, res) {
    app.get('/login', function (req, res) {
     res.sendFile(path.join(__dirname, '../gareebo ke buffet_2','login.html'));
    });
+
+
+   app.post("/details",function(req,res){
+    var Email =req.body.Email;
+    var symbol =req.body.company;
+
+    User.updateOne({ email: Email }, { $addToSet: { favourites: [symbol]} }, function(
+     err,
+     result
+   ) {
+     if (err) {
+     console.log(err)
+     } else {
+       
+       console.log(result);
+     }
+   });
+   
+   
+   
+  })
    
   /* app.post('/registration', function (req, res) {
 

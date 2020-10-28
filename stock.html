@@ -10,7 +10,9 @@
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"
         integrity="sha384-R4/ztc4ZlRqWjqIuvf6RX5yb/v90qNGx6fS48N0tRxiGkqveZETq72KgDVJCp2TC"
         crossorigin="anonymous"></script>
-    <script >xlet =[];
+        
+    <script >
+        xlet =[];
         ylet =[];
         x2let =[];
         async function getData(symbol){
@@ -47,51 +49,75 @@
 </head>
 <body>
     
-    <label for="company">Enter company symbol
-        (like AAPL for APPLE)
-    </label>
-    <input id ="search" type ="text" name="company">
+    
+    <form action = "/details"  method = "POST">
+        <label for="company">Enter company symbol
+            (like AAPL for APPLE) </label>
+    <input id ="search" type ="text" name="company">  
     <button id="search_btn">search</button><br>
     <canvas id ="myChart" width ="800" heigth ="400"></canvas><br>
+    <input id = "mail" type = "text" name = "Email">
+    <p id = "messg">to add this stock to favorite enter your email</p>
+    <button id ="enter" type ="submit">Enter</button>
+</form>
+    
     <button id ="add_fav">addtofav</button>
-
+    
+    
     
     
     <p id = "stockprice"></p>
+    <!--script src="static/details.js"></script-->
 <script>
+
+
+
+   // const { User, validate } = require('./trash2');
     $("#add_fav").hide();
+    $("#mail").hide();
+    $("#messg").hide();
+    $("#enter").hide();
     var symbol;
+    var Email;
         $("#search_btn").click(function() {
             
              symbol=$("#search").val();
-             next(symbol);
+             xyz();
+             //next(symbol);
         })
-        $("#add-fav").click(function() {
-
-            var myModule = require('./log');
-
-// name is a member of myModule due to the export above
-var Email = myModule.Email;
-console.log(Email);
-            db.getCollection('User').findOneAndUpdate(
-   { email: Email }, 
-   { $push: { 
-             favourites: {
-                symbol,
-               }  
-           } 
-   },function(err, doc) {
-        if (err);
-        throw err;
-    })
-        })
+        
+            
     async function next(symbol){
         await chartit();
         const stockprice = await getPrice(symbol);
         $("#stockprice").append(`current value of the ${symbol} is ${stockprice}`);
         await $("#add_fav").show();
         //console.log(symbol);
+        //await xyz();
     }
+
+    async function xyz(){
+        await next(symbol);
+        $("#add_fav").click( function(){
+        $("#add_fav").hide();
+        $("#mail").show();
+        $("#enter").show();
+        $("#messg").show();
+        //Email = $("#mail").val();
+    //favouriteDB();
+})
+    }
+    /*async function enter(){
+        await xyz();
+        $("#enter").click(async function(){
+            $("#add_")
+           // Email = $("#mail").val();
+            //console.log(Email);
+            //await update_fav(Email,symbol);
+        })
+        
+    }*/
+    
 // FUNCTION TO MAKE THE CHART
 async function chartit(){ 
        await getData(symbol);
