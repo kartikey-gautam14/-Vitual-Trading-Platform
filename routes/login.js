@@ -1,7 +1,7 @@
 const Joi = require('joi');
 const bcrypt = require('bcrypt');
 const _ = require('lodash');
-const { User } = require('./trash2');
+const { User } = require('../database');
 const express = require('express');
 const router = express.Router();
 var path =require('path');
@@ -27,15 +27,14 @@ router.post('/', async (req, res) => {
     // those provided in the request
     
 
-    if(req.body.passord==user.password)
+    if(req.body.password==user.password)
     //const validPassword = await bcrypt.compare(req.body.password, user.password);
     {
         return res.status(400).send('Incorrect  password.');
     }
  
     console.log("done");
-    Email=req.body.email;
-    exports.Email=Email;
+    
 
     
     res.sendFile(path.join(__dirname, '../gareebo ke buffet_2', 'stock.html'));

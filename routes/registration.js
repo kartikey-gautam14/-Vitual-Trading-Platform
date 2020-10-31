@@ -1,4 +1,4 @@
-const { User, validate } = require('./trash2');
+const { User, validate } = require('../database');
 const express = require('express');
 const router = express.Router();
 var path =require('path');
