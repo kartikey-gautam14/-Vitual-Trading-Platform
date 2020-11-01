@@ -6,11 +6,12 @@ var path =require('path')
 var bcrypt = require('bcrypt');
 var mongoose = require('mongoose');
 var fetch=require('node-fetch');
+var sell=require('./routes/Sell.js')
 
 const users = require('./routes/registration.js');
 const { User, validate } = require('./database');
 const log = require('./routes/login');
-var detail=require('./routes/Buy')
+var detail=require('./routes/addfav.js')
 app.engine('html', require('ejs').renderFile);
 app.set('view engine','ejs')
 
@@ -41,8 +42,9 @@ app.use(express.urlencoded({extended : true}));
 app.use('/registration', users);
 app.use('/login', log);
 app.use('/details',detail);
+app.use('/abc',sell)
 
-app.use("/static", express.static('./static/'));
+
 
 app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname, '../gareebo ke buffet_2','register.html'));
@@ -51,7 +53,6 @@ app.get('/', function (req, res) {
    app.get('/login', function (req, res) {
     res.sendFile(path.join(__dirname, '../gareebo ke buffet_2','login.html'));
    });
-<<<<<<< HEAD
    app.get('/frontpage', function (req, res) {
     res.sendFile(path.join(__dirname, '../gareebo ke buffet_2','frontpage.html'));
    });
@@ -73,32 +74,13 @@ app.get('/', function (req, res) {
       res.sendFile(__dirname + '/stock.html')
       })
 
-
+      app.get('/sell', function (req, res) {   
+        res.sendFile(__dirname + '/sell.html')
+        });
+  
+  
 
   
-=======
-
-
-   app.post("/details",function(req,res){
-    var Email =req.body.Email;
-    var symbol =req.body.company;
-
-    User.updateOne({ email: Email }, { $addToSet: { favourites: [symbol]} }, function(
-     err,
-     result
-   ) {
-     if (err) {
-     console.log(err)
-     } else {
-       
-       console.log(result);
-     }
-   });
-   
-   
-   
-  })
->>>>>>> 370fbd47e6c66b17a148305d8fa592ac1da9165b
    
    
 

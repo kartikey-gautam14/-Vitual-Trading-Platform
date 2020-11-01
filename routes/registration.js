@@ -25,7 +25,7 @@ router.post('/', async (req, res) => {
        
         await user.save();
         console.log(user)
-        res.sendFile(path.join(__dirname, '../gareebo ke buffet_2', 'login.html'));
+        res.sendFile(path.join(__dirname,'../login.html'));
 
     }
 });

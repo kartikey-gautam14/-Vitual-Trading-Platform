@@ -9,22 +9,11 @@ var fetch=require('node-fetch');
 
    router.post("/",function(req,res){
      var Email =req.body.Email;
-     var symbol =req.body.company;
+     var symbol =req.body.symbol;
      var No = req.body.volume;
 
 
-     User.updateOne({ email: Email }, { $addToSet: { favourites: [symbol]} }, function(
-      err,
-      result
-    ) {
-      if (err) {
-      console.log(err)
-      } else {
-        
-        console.log(result);
-      }
-    });
-
+     
   async function getPrice(symbol){
   const response =fetch(`https://api.twelvedata.com/price?symbol=${symbol}&apikey=734363d03f5e4e4c9d80c0938eb6ab32`);
   const data = await (await response).json();
@@ -32,6 +21,7 @@ var fetch=require('node-fetch');
   return price;
   }
   async function  h(){
+    
      var price = await getPrice(symbol);
  User.updateOne({ email: Email }, { $addToSet: { BStock: [{symbol :symbol,
                                                            volume:No,
@@ -56,6 +46,7 @@ console.log(result);
              else{
                  console.log("modified");
                  console.log(result);
+                 res.sendFile(path.join(__dirname,'../frontpage.html'))
              }
         });
 

@@ -27,7 +27,7 @@ router.post('/', async (req, res) => {
     // those provided in the request
     
 
-    if(req.body.password==user.password)
+    if(req.body.password!=user.password)
     //const validPassword = await bcrypt.compare(req.body.password, user.password);
     {
         return res.status(400).send('Incorrect  password.');
@@ -37,7 +37,7 @@ router.post('/', async (req, res) => {
     
 
     
-    res.sendFile(path.join(__dirname, '../gareebo ke buffet_2', 'stock.html'));
+    res.sendFile(path.join(__dirname , '../frontpage.html'));
 
 });
 
