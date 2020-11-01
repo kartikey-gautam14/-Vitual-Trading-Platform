@@ -9,7 +9,7 @@ var fetch=require('node-fetch');
 
    router.post("/",function(req,res){
      var Email =req.body.Email;
-     var symbol =req.body.symbol;
+     var symbol =req.body.company;
      var No = req.body.volume;
 
 
@@ -23,6 +23,7 @@ var fetch=require('node-fetch');
   async function  h(){
     
      var price = await getPrice(symbol);
+     console.log(price);
  User.updateOne({ email: Email }, { $addToSet: { BStock: [{symbol :symbol,
                                                            volume:No,
 }]} }, function(
@@ -32,7 +33,7 @@ result
 if (err) {
 console.log(err)
 } else {
-flag=1;
+
 
 console.log(result);
 }

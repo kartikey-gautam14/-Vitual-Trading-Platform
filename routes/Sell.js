@@ -9,7 +9,8 @@ var router=express.Router();
 
 
 router.post("/",function(req,res){
-    var ID=req.body.object
+    var ID=req.body.object;
+    var Email=req.body.email;
     
 
     async function getPrice(symbol){
@@ -53,15 +54,15 @@ router.post("/",function(req,res){
                 console.log(result);
                 
               })
-              User.findOneAndUpdate(  { "BStock._id": ID }, 
-              {$inc: {'Wallet': price*10}}, 
+              User.findOneAndUpdate(  { email: Email }, 
+              {$inc: {Wallet: price*No}}, 
               
               function(err, result) { 
                    if (err) throw err;
                    else{
                        console.log("modified");
-                       console.log(result);
-                       res.sendFile(__dirname,'../frontpage.html')
+                       console.log(result[0]);
+                       
                    }
               });
         }
@@ -78,6 +79,7 @@ router.post("/",function(req,res){
                 
               )};
               h();
+              res.sendFile(path.join(__dirname,'../frontpage.html'))
                 });
                 module.exports=router;
               

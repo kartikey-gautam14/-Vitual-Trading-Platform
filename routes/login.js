@@ -5,7 +5,6 @@ const { User } = require('../database');
 const express = require('express');
 const router = express.Router();
 var path =require('path');
-var Email;
   
  
 

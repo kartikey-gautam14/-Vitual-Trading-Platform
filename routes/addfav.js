@@ -9,6 +9,7 @@ var fetch=require('node-fetch');
 
 
 router.post("/",function(req,res){
+  var symbol =req.body.company
     var Email=req.body.Email;
 User.updateOne({ email: Email }, { $addToSet: { favourites: [symbol]} }, function(
     err,
@@ -17,6 +18,7 @@ User.updateOne({ email: Email }, { $addToSet: { favourites: [symbol]} }, functio
     if (err) {
     console.log(err)
     } else {
+      
       
       console.log(result);
     }

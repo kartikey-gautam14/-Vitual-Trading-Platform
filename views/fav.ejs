@@ -5,17 +5,21 @@
 <% if(user!=null){ %>
 
 <table>
-<tr>
-    <th>symbol of the company</th>
-    <th>Price of shares </th>
+
+    
+    <%user1.forEach(function(item){%>
+        <tr>
+    <td><%= item%> </td>
+    <%})%>
+    
     
 
     
 </tr>
 <% user.forEach(function(item){ %>
 <tr>
-    <td><%= item.symbol%></td>
-    <td><%= item.volume%></td>
+    <td><%= item%></td>
+    
     
     
 

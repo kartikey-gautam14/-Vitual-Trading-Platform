@@ -7,11 +7,13 @@ var bcrypt = require('bcrypt');
 var mongoose = require('mongoose');
 var fetch=require('node-fetch');
 var sell=require('./routes/Sell.js')
+var buyps=require('./routes/buy.js')
 
 const users = require('./routes/registration.js');
 const { User, validate } = require('./database');
 const log = require('./routes/login');
-var detail=require('./routes/addfav.js')
+var detail=require('./routes/addfav.js');
+const { getMaxListeners } = require('process');
 app.engine('html', require('ejs').renderFile);
 app.set('view engine','ejs')
 
@@ -43,6 +45,7 @@ app.use('/registration', users);
 app.use('/login', log);
 app.use('/details',detail);
 app.use('/abc',sell)
+app.use('/buyps',buyps);
 
 
 
@@ -59,8 +62,9 @@ app.get('/', function (req, res) {
    app.get('/buys', function (req, res) {
     res.sendFile(path.join(__dirname, '../gareebo ke buffet_2','Buy.html'));
    });
-   app.get('/current', function (req, res) {   
-    User.find({email : "lodulalit@gmail.com"}, function (err, result) {
+   app.get('/current', function (req, res) { 
+     Email=req.query.abc;
+    User.find({email : Email}, function (err, result) {
         if (err) {
             console.log(err);
         } else {
@@ -69,6 +73,51 @@ app.get('/', function (req, res) {
         }
     })
     })
+
+    app.get('/fav', function (req, res) { 
+        Email=req.query.Email;
+        async function getPrice(symbol){
+            const response =fetch(`https://api.twelvedata.com/price?symbol=${symbol}&apikey=734363d03f5e4e4c9d80c0938eb6ab32`);
+            const data = await (await response).json();
+            var price = data.price;
+            return price;
+            }
+       User.find({email : Email}, async function (err, result) {
+           if (err) {
+               console.log(err);
+           } else {
+            console.log(result[0].favourites);
+            var i=0;
+            var arr=[];
+            console.log(result[0].favourites.length)
+            while(i<result[0].favourites.length){
+            var symbol =result[0].favourites[i];
+        
+            var price = await getPrice(symbol);
+            
+            arr.push(price);
+            i++;
+            
+        }
+        console.log(arr);
+    
+             
+               res.render('fav',{user : arr,user1 : result[0].favourites});
+           }
+       })
+       });
+
+       app.post('/Wallet',function(req,res){
+           Email =req.body.email;
+
+           User.find({email : Email},function(err,result){
+               if(err)
+               throw err;
+               else
+               res.json(result[0].Wallet);
+           })
+
+       });
 
     app.get('/addfav', function (req, res) {   
       res.sendFile(__dirname + '/stock.html')
