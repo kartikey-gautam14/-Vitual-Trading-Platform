@@ -35,6 +35,7 @@ router.post("/",function(req,res){
                         if(result[0].BStock[i]._id==ID){
                             console.log(result[0].BStock[i].symbol);
                             var symbol=result[0].BStock[i].symbol;
+                            var No=result[0].BStock[i].volume
                             
                             break;
                         }
@@ -44,7 +45,9 @@ router.post("/",function(req,res){
                     }
 
                     var price = await getPrice(symbol);
+                    var inc=price*No;
                     console.log(price);
+                    console.log(inc);
         
             User.updateOne( { "BStock._id": ID }, {  $pull: { BStock: { _id: ID }}}, 
             function( err,result){
@@ -54,14 +57,14 @@ router.post("/",function(req,res){
                 console.log(result);
                 
               })
-              User.findOneAndUpdate(  { email: Email }, 
-              {$inc: {Wallet: price*No}}, 
+              User.findOneAndUpdate(  { "email": Email }, 
+              {$inc: {"Wallet":inc }}, 
               
               function(err, result) { 
                    if (err) throw err;
                    else{
                        console.log("modified");
-                       console.log(result[0]);
+                       
                        
                    }
               });
