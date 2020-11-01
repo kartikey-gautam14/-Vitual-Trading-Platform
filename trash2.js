@@ -21,11 +21,16 @@ const User = mongoose.model('User', new mongoose.Schema({
         minlength: 5,
         maxlength: 1024
     },
-    favourites: {
-        type: Array,
-        
-
-    }
+    favourites: [ String,
+    ],
+    Wallet: {
+        type : Number,
+        default : 5000,
+    }, 
+    BStock: [{
+        symbol: {type: String},
+        volume:{type: Number},
+    }],
 }));
  
 function validateUser(user) {
