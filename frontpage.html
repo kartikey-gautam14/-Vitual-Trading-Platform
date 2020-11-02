@@ -1,37 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+    background-color: #76b852;
+  }
+  li button {
+      width: 100%;
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    padding: 15px 20px;
+    margin: 5px 5px;
+    background-color: #4CAF50;
+    margin:10px 30px 10px 30px;
+    font-size: 20px;
+}
+li input, label {
+  text-align: center;
+  padding: 0 0 0 10px;
+  margin-left: 60px;
+}
+
+
+li button.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+li button:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+</style>
 <body>
+    <ul>
+    <li>
     <form action="/current" method="GET">
         <label for="abc">Enter your Email ID</label>
         <input for="abc" name ="abc">
         <button type="submit">View your current holdings</button>
     </form>
-    <form action="/addfav" >
+    </li>
+    <br>
+    <li>
+    <form action="/addfav">
         <button type="submit">View Graph and add stocks to favourite</button>
     </form>
+    </li>
+    <br>
+    <li>
     <form action="/buys">
         <button type="submit">Buy Stocks</button>
     </form>
+    </li>
+    <br>
+    <li>
     <form action="/sell">
         <button type="submit">Sell stocks using SellingId</button>
     </form>
+    </li>
+    <br>
+    <li>
     <form action="/fav" >
-        <label for="Email">Enter your Email for this purpose</label>
+        <label for="Email">Enter your Email for tracking favourites</label>
         <input id="Email" name="Email">
         <button type="submit">Track your favourite stock in real time</button>
     </form>
+  </li>
+  <br>
+  <li>
     <form action="/Wallet" method="POST">
-        <label for="email">Enter your Email for this purpose</label>
+        <label for="email">Enter your Email for viewing Wallet balance</label>
         <input id="email" name="email">
         <button type="submit">View your Wallet Balance</button>
     </form>
+    </li>
+    </ul>
     
     
 </body>
