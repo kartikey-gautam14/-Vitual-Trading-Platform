@@ -49,17 +49,51 @@
     //getData();</script>
     <title>Document</title>
 </head>
-<body>
-    
+<style>
+    body {
+        background-color: palegreen;
+    }
+    .container {
+        width:60%;
+        margin: auto;
+        line-height: 40px;
+        background-color: #4CAF50;
+        margin-top:30px;
+        padding: 10px 10px;
+        border-radius: 5px;
+    }
+    h1 {
+        text-align: center;
+        color:#4CAF50;
+        text-shadow: 2px 2px 3px white;
+        outline: 4px;
+        font-weight: bold;
+    }
+    input,select,button {
+        background-color: lightgreen;
+        border: 2px solid #4CAF50;
+        padding: 4px 3px;
+    }
+    select {
+        width:90px;
+    }
+    button {
+        width:100px;
+        font-weight: bold;
 
-    <label for="interval">select suitable interval for the graph</label>
+    }
+</style>
+<body>
+    <h1>Graph</h1>
+    <div class="container">
+    <label for="interval">Select suitable interval for the graph</label>
     <select name="interval" id="interval">
     <option value="1d">one day</option>
     <option value="1wk">one week</option>
     <option value="1mo">one month</option>
   </select>
     <br>
-  <label for="range">select suitable range for the graph</label>
+  <label for="range">Select suitable range for the graph</label>
   <select name="range" id="range">
   <option value="1mo">one month</option>
   <option value="3mo">three month</option>
@@ -67,7 +101,7 @@
   <option value="1y">one year</option>
 </select>
     <br>
-    <label for="chart_type">select suitable chart type for the graph</label>
+    <label for="chart_type">Select suitable chart type for the graph</label>
     <select name="chart_type" id="chart_type">
     <option value="line">line</option>
     <option value="bar">bar</option>
@@ -77,7 +111,8 @@
         <label for="company">Enter company symbol
             (like AAPL for APPLE) </label>
     <input id ="search" type ="text" name="company">  
-    <button id="search_btn">search</button><br>
+    <button id="search_btn">Search</button><br>
+    </div>
     <canvas id ="myChart" width ="800" heigth ="400"></canvas><br>
     <input id = "mail" type = "text" name = "Email">
     <p id = "messg">EMAIL is required</p>
