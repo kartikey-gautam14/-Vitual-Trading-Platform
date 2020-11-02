@@ -3,30 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Registration</title>
 </head>
+<style>
+  body {
+    font: 13px/20px "Lucida Grande", Tahoma, Verdana, sans-serif;
+    color: #404040;
+    background: #76b852;
+  }
+  h1 {
+    margin-bottom: 5px;
+  }
+  input[type=email], 
+  input[type=password],
+  input[type=text] {
+    width: 100%; 
+    padding: 12px 20px; 
+    margin: 8px 0; 
+    display: inline-block; 
+    border: 1px solid #ccc; 
+    box-sizing: border-box;
+  }
+  div.form {
+    margin-top: 10px;
+    display: block;
+    text-align: center;
+}
+  form { 
+    margin:15px 15px;
+    border: 4px solid #f1f1f1; 
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    background: white;
+    position:relative;
+    border-color: white;
+    border-radius: 3px;
+    padding: 8px 10px;
+  }
+  .submit { 
+    background-color: #4CAF50; 
+    color: white; 
+    padding: 10px 20px; 
+    margin: 8px 0; 
+    border: 1px solid black; 
+    cursor: pointer; 
+    width: 100%; 
+    font-size: 15px;
+  } 
+  /* set a hover effect for the button*/ 
+  
+  .submit:hover { 
+    opacity: 0.8; 
+    color :black;
+    font-weight: bold;
+    background-color: #43A047;
+  }
+  .login { 
+    width: auto; 
+    padding: 10px 18px; 
+    background-color: #4CAF50; 
+    color: white;
+
+  }
+  .login:hover{
+    opacity: 0.8;
+    color:black;
+    background-color: #43A047;
+    font-weight: bold;
+  }
+  .link {
+    float: right;
+    text-decoration: none;
+    color: #4CAF50;
+    border: 1px solid  #4CAF50;
+    padding: 4px 4px;
+    font-size: 125%;
+  }
+  .link:hover {
+    text-decoration: underline;
+    font-weight: bold;
+  }
+  .imgcontainer { 
+    text-align: center; 
+    margin: 24px 0 12px 0; 
+  } 
+  /*set image properties*/ 
+  
+  img.img { 
+    width: 40%; 
+    border-radius: 50%; 
+  } 
+</style>
 <body>
+    <div class="form">
+      <h1>Register Yourself</h1>
     <form action="/registration" method="POST">
+      <div class="imgcontainer"> 
+      <img src= 
+"https://img.favpng.com/12/22/5/speech-balloon-question-mark-comics-png-favpng-twGzMpKvHumh9njA5ebEnwbkw.jpg"
+        alt="image" class="img"> 
+    </div>
         <div class="form-group">
-          <label for="name">USERNAME</label>
-          <input  id="name" name="name" >
-          
+          <label for="name"><b>USERNAME</b></label>
+          <input type="text"  id="name" name="name" placeholder="Enter USERNAME" >
+          <label for="password"><b>PASSWORD</b></label>
+          <input type="password" id="password" name="password" placeholder="Set PASSWORD">
+          <label for="email"><b>EMAIL</b></label>
+          <input type="email" id="email" name="email" placeholder="Enter a valid EMAIL">
         </div>
-        <div class="form-group">
-          <label for="password">PASSWORD</label>
-          <input  id="password" name="password">
-        </div>
-
-        <div class="form-group">
-          <label for="email">EMAIL</label>
-          <input  id="email" name="email">
-        </div>
-        
-       
-
-
-
-        <button type="submit">Submit</button><a href="login">Login</a><a href="frontpage">frontpage</a>
+        <div>
+        <button type="submit" class="submit">Submit</button>
+        <a href="login.html" ><button type="button" class="login"><b>Login</b></button></a>
+        <br>
+        <a href="frontpage" class="link">Front page</a>
+      </div>
       </form>
+    </div>
 </body>
 </html>
