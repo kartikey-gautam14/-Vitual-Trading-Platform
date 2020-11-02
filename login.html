@@ -3,21 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login</title>
 </head>
+<style>
+  body {
+    font: 13px/20px "Lucida Grande", Tahoma, Verdana, sans-serif;
+    background: url(https://www.teahub.io/photos/full/298-2987595_stock-market.png) #0ca3d2;
+}
+  h1 {
+    text-align: center; 
+    margin: 20px 20px;
+    line-height: 20px;
+    font-size: 35px;
+    font-weight: bold;
+    color: slateblue; /*#555*/
+  }
+  div.form {
+    display: block;
+    text-align: center;
+}
+  form { 
+    border: 3px solid #f1f1f1; 
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    background: white;
+  } 
+  input[type=email], 
+  input[type=password] { 
+    width: 100%; 
+    padding: 12px 20px; 
+    margin: 8px 0; 
+    display: inline-block; 
+    border: 1px solid #ccc; 
+    box-sizing: border-box; 
+    opacity: 0.6;
+  }
+  label {
+    font-size: 16px;
+  }
+  button { 
+    background-color: #4CAF50; /*4CAF*/
+    color: white; 
+    padding: 14px 20px; 
+    margin: 8px 0; 
+    border: none; 
+    cursor: pointer; 
+    width: 100%; 
+  } 
+  /* set a hover effect for the button*/ 
+  
+  button:hover { 
+    opacity: 0.8; 
+    color:#000000;
+  }
+  .imgcontainer { 
+    text-align: center; 
+    margin: 24px 0 12px 0; 
+  } 
+  /*set image properties*/ 
+  
+  img.stock { 
+    width: 40%; 
+    border-radius: 50%; 
+  } 
+  /*set padding to the container*/ 
+  
+  .container { 
+    padding: 16px; 
+  }
+  .register { 
+    width: auto; 
+    padding: 10px 18px; 
+    background-color: royalblue; /*f44336*/
+  }
+  @media only screen and (max-width: 768px){
+    form{
+      width:100%;
+    }
+  }
+  @media only screen and (min-width: 769px){
+    form{
+      width:768px;
+    }
+  }
+  span {
+    margin-right: 10px;
+    color: royalblue;
+  }
+</style>
 <body>
+  <div class="form">
     <form action="/login" method="POST">
-        <div class="form-group">
-          <label for="email">email</label>
-          <input  id="email" name="email" >
-          
+      <h1>Login</h1>
+      <div class="imgcontainer"> 
+      <img src= 
+"https://image.freepik.com/free-vector/stock-market-investment-business-analysis-concept_203228-46.jpg"
+        alt="stock image" class="stock"> 
+    </div>
+        <div class="form-group container">
+          <label for="email"><b>Email</b></label>
+          <input  type="email" id="email" name="email" required placeholder="Enter email" >
+          <label for="password"><b>Password</b></label>
+          <input type="password"  id="password" name="password" required placeholder="Enter password">
+          <span><b>New member?</b></span><a href="register.html" ><button type="button" class="register"><b>Register Here</b></button></a>
         </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input  id="password" name="password">
-        </div>
-
-        <button type="submit">Submit</button>
       </form>
+  </div>
 </body>
 </html>
