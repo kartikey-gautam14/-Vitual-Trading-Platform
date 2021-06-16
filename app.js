@@ -34,7 +34,7 @@ app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({
     extended: true }))
 
-app.listen(3000,()=>{
+app.listen(5000,()=>{
     console.log("server is working")
 })
 
@@ -50,17 +50,17 @@ app.use('/buyps',buyps);
 
 
 app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname, '../gareebo ke buffet_2','register.html'));
+    res.sendFile(path.join(__dirname,'register.html'));
    });
 
    app.get('/login', function (req, res) {
-    res.sendFile(path.join(__dirname, '../gareebo ke buffet_2','login.html'));
+    res.sendFile(path.join(__dirname,'login.html'));
    });
    app.get('/frontpage', function (req, res) {
-    res.sendFile(path.join(__dirname, '../gareebo ke buffet_2','frontpage.html'));
+    res.sendFile(path.join(__dirname ,'frontpage.html'));
    });
    app.get('/buys', function (req, res) {
-    res.sendFile(path.join(__dirname, '../gareebo ke buffet_2','Buy.html'));
+    res.sendFile(path.join(__dirname,'Buy.html'));
    });
    app.get('/current', function (req, res) { 
      Email=req.query.abc;

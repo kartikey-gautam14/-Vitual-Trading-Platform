@@ -1,0 +1,13 @@
+.navbar{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.navigation{
+    padding:10px;
+    margin-top:10px;
+}
+.navigation:hover{
+    background-color:teal;
+    
+}
