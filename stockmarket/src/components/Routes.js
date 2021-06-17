@@ -1,11 +1,17 @@
-import React from 'react'
+import React from 'react';
+import {BrowserRouter as Switch,Route } from 'react-router-dom';
+import Login from './Login';
 
 const Routes = () => {
     return (
         <div>
-            hi i am route
+        
+             <Switch>
+                 <Route exact path = "/login" component = {Login}/>
+             </Switch>
+      
         </div>
     )
 }
 
-export default Routes
+export default Routes;
