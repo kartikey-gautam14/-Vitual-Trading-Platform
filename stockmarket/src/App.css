@@ -29,6 +29,20 @@
   display:flex;
   
 }
+.login{
+  display:flex;
+  
+  justify-content: center;
+  align-items: center;
+ }
+ .login_component{
+   margin-top: 100px;
+   height:600px;
+   width:800px;
+   background-color: thistle;
+   display:flex;
+   
+ }
 .register_image{
   position:relative;
  width : 50%;
