@@ -15,6 +15,9 @@ const { User, validate } = require('./database');
 const log = require('./routes/login');
 var detail=require('./routes/addfav.js');
 const { getMaxListeners } = require('process');
+var cors = require('cors')
+
+app.use(cors())
 app.engine('html', require('ejs').renderFile);
 app.set('view engine','ejs')
 
