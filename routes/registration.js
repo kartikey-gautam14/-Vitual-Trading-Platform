@@ -29,11 +29,9 @@ async (req, res) => {
                 email: req.body.email,
                 password: req.body.password
             });
-           try{
+           
             await users.save();
-           }catch(err){
-               console.log(err);
-           }
+           
             
             console.log(users);
             jwt.sign({users}, 'privatekey', { expiresIn: '1h' },(err, token) => {

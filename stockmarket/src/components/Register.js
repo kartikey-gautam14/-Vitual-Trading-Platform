@@ -1,8 +1,10 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import axios from "axios"
- import { Link } from 'react-router-dom';
+ import { Link,Redirect } from 'react-router-dom';
+ import setauthtoken from '../utility';
 
 const Register = () => {
+  const[isAuthenticated,setisAuth] = useState(false);
     const [formdata,setformdata] = useState({
         name : "",
         email : "",
@@ -17,20 +19,44 @@ const Register = () => {
  }
  const onsubmit = async (e) => {
      e.preventDefault();
-     axios.post('http://localhost:5000/registration', {
-      name: name,
-      email: email,
-      password:password,
-    })
-    .then((response) => {
-      console.log(response);
-    }, (error) => {
-      console.log(error);
-    });
+     try{
+      axios.post('http://localhost:5000/registration', {
+        name: name,
+        email: email,
+        password:password,
+      })
+      .then((response) => {
+      
+        if(window.localStorage.getItem('token'))
+         localStorage.removeItem('token');
+        setauthtoken(response.data);
+        setisAuth(true);
+        
+      },(error) => {
+        console.log(error);
+      });
+     }catch(err){
+       console.log(err);
+     }
+     
  }
+ if(isAuthenticated){
+   return <Redirect to = "/portfolio"/>
+ }
+// useEffect(()=>{
+//   let tok = window.localStorage.getItem('token');
+//  if(tok){
+//    console.log(tok);
+ 
+  
+ 
+//  }
+ 
+//  },[isAuthenticated]);
 
     
     return (
+      
         <div className = "register">
         <div className = "registration">
             <div className = " register_image">
