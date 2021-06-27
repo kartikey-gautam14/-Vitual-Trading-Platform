@@ -8,4 +8,4 @@ const Bought = () => {
     )
 }
 
-export default Bought
+export default Bought;

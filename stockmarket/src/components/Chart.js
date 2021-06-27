@@ -136,3 +136,4 @@ export const Chart = ({symbol,charttype,range,interval}) => {
     )
 }
 export default Chart;
+
