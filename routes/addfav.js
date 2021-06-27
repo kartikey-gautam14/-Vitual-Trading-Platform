@@ -1,4 +1,6 @@
-const { User, validate } = require('../database');
+
+const User = require('../schemas/userschema');
+const user = require('../schemas/portfolio')
 const express = require('express');
 const router = express.Router();
 var path =require('path');
@@ -8,10 +10,19 @@ var fetch=require('node-fetch');
 
 
 
-router.post("/",function(req,res){
+router.post("/",async function(req,res){
   var symbol =req.body.company
     var Email=req.body.Email;
-User.updateOne({ email: Email }, { $addToSet: { favourites: [symbol]} }, function(
+    
+   var get_id =await User.findOne({email:Email});
+    var id = get_id.id;
+    console.log(id);
+
+  //  var stock_exists =  user.findOne({favouritestocks : {stockname : symbol}});
+  //  if(stock_exists)
+  //  return res.status(400).json("already added");
+  
+user.updateOne({ user: id }, { $addToSet: { favouritestocks: symbol }}, function(
     err,
     result
   ) {
@@ -19,7 +30,7 @@ User.updateOne({ email: Email }, { $addToSet: { favourites: [symbol]} }, functio
     console.log(err)
     } else {
       
-      
+      res.status(200).json( "added");
       console.log(result);
     }
   });

@@ -1,5 +1,6 @@
 import React from 'react';
 import './Navbar.css';
+import {Link} from 'react-router-dom';
 
 
 const Navbar = () => {
@@ -7,12 +8,11 @@ const Navbar = () => {
         <div className = "navbar" >
             
                     
-                <div className = "navigation"> Manage your funds</div>
-                <div className = "navigation"> Portfolio</div>
-                <div className = "navigation"> graphs section</div>
-                <div className = "navigation"> favourite stock</div>
-                <div className = "navigation"> buying stocks </div>
-                <div className = "navigation"> history</div>
+                <div className = "navigation"> <Link to = "/funds">Funds</Link></div>
+                <div className = "navigation"><Link to = "/portfolio">Portfolio</Link></div>
+                <div className = "navigation"> <Link to = "/bought">Bought</Link></div>
+                <div className = "navigation"> <Link to = "/sold">Transactions</Link></div>
+               
                     
             
         

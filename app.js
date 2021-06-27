@@ -9,7 +9,7 @@ var fetch=require('node-fetch');
 var sell=require('./routes/Sell.js')
 var buyps=require('./routes/buy.js')
 const user = require('./schemas/userschema');
-
+const getfav = require('./routes/getfav');
 const users = require('./routes/registration.js');
 const { User, validate } = require('./database');
 const log = require('./routes/login');
@@ -45,7 +45,7 @@ app.listen(5000,()=>{
 
 app.use(express.json());
 app.use(express.urlencoded({extended : true}));
-
+app.use('/getfav',getfav);
 app.use('/registration', users);
 app.use('/login', log);
 app.use('/details',detail);

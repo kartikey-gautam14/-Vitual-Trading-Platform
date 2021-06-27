@@ -1,11 +1,13 @@
 // const { User, validate } = require('../database');
 const jwt = require('jsonwebtoken');
+
 const User  = require('../schemas/userschema')
 const express = require('express');
 const router = express.Router();
 var path =require('path');
 var bcrypt=require('bcrypt');
 var {check,validationResult} = require('express-validator');
+const portfolio = require('../schemas/portfolio');
  
 router.post('/', check('email','please enter a valid email').isEmail(),
 check('password','please enter a password').exists(),
@@ -24,16 +26,22 @@ async (req, res) => {
         return res.status(400).send('That user already exisits!');
     } else {
         try{
+            
             users = new User({
                 name: req.body.name,
                 email: req.body.email,
                 password: req.body.password
             });
+            var portfoli = new portfolio({
+                user:users,
+             });
            
             await users.save();
+            await portfoli.save();
            
             
             console.log(users);
+            console.log(portfoli);
             jwt.sign({users}, 'privatekey', { expiresIn: '1h' },(err, token) => {
                 if(err) { console.log(err) }    
                 res.send(token);
