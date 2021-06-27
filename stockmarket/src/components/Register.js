@@ -1,4 +1,5 @@
 import React,{useState} from 'react';
+import axios from "axios"
  import { Link } from 'react-router-dom';
 
 const Register = () => {
@@ -16,10 +17,16 @@ const Register = () => {
  }
  const onsubmit = async (e) => {
      e.preventDefault();
-     axios.post('/localhost:5000/registration',formdata)
-     .then(response => {
-         
-     })
+     axios.post('http://localhost:5000/registration', {
+      name: name,
+      email: email,
+      password:password,
+    })
+    .then((response) => {
+      console.log(response);
+    }, (error) => {
+      console.log(error);
+    });
  }
 
     

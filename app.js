@@ -8,14 +8,19 @@ var mongoose = require('mongoose');
 var fetch=require('node-fetch');
 var sell=require('./routes/Sell.js')
 var buyps=require('./routes/buy.js')
+const user = require('./schemas/userschema');
 
 const users = require('./routes/registration.js');
 const { User, validate } = require('./database');
 const log = require('./routes/login');
 var detail=require('./routes/addfav.js');
 const { getMaxListeners } = require('process');
+var cors = require('cors')
+
+app.use(cors())
 app.engine('html', require('ejs').renderFile);
 app.set('view engine','ejs')
+
 
 
 
@@ -53,7 +58,7 @@ app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname,'register.html'));
    });
 
-   app.get('/login', function (req, res) {
+   app.get('/logi', function (req, res) {
     res.sendFile(path.join(__dirname,'login.html'));
    });
    app.get('/frontpage', function (req, res) {

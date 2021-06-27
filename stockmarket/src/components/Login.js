@@ -37,7 +37,7 @@ const Login = () => {
           </form>
          <p className="my-1">
         
-        Don't have an account? <Link to="/">Sign Up</Link>
+        Don't have an account? <Link to= "/">Sign Up</Link>
       </p> 
           
           {/* <span><b>alrea member?</b></span><a href="/" ><button type="button" className="register"><b>Register Here</b></button></a> */}
@@ -49,4 +49,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default Login;
