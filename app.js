@@ -16,6 +16,7 @@ const log = require('./routes/login');
 var detail=require('./routes/addfav.js');
 var getbought = require('./routes/getbought');
 const { getMaxListeners } = require('process');
+const getwallet = require('./routes/getwallet');
 var cors = require('cors')
 
 app.use(cors())
@@ -53,6 +54,7 @@ app.use('/details',detail);
 app.use('/sell',sell)
 app.use('/buyps',buyps);
 app.use('/getbought',getbought);
+app.use('/getwallet',getwallet);
 
 
 
