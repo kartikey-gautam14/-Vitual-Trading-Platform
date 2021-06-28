@@ -14,6 +14,7 @@ const users = require('./routes/registration.js');
 const { User, validate } = require('./database');
 const log = require('./routes/login');
 var detail=require('./routes/addfav.js');
+var getbought = require('./routes/getbought');
 const { getMaxListeners } = require('process');
 var cors = require('cors')
 
@@ -49,8 +50,9 @@ app.use('/getfav',getfav);
 app.use('/registration', users);
 app.use('/login', log);
 app.use('/details',detail);
-app.use('/abc',sell)
+app.use('/sell',sell)
 app.use('/buyps',buyps);
+app.use('/getbought',getbought);
 
 
 
@@ -128,9 +130,9 @@ app.get('/', function (req, res) {
       res.sendFile(__dirname + '/stock.html')
       })
 
-      app.get('/sell', function (req, res) {   
-        res.sendFile(__dirname + '/sell.html')
-        });
+    //   app.get('/sell', function (req, res) {   
+    //     res.sendFile(__dirname + '/sell.html')
+    //     });
   
   
 

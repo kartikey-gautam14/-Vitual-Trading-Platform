@@ -67,6 +67,7 @@ const Portfolio = () => {
             
         
         })};
+        if(email !== "")
         getfav();
 
     },[email])

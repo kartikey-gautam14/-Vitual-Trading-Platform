@@ -7,6 +7,18 @@ const UserSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'user'
       },
+      Wallet: {
+        type : Number,
+        default : 5000,
+    }, 
+    Profit: {
+        type : Number,
+        default : 0,
+    }, 
+    Loss: {
+        type : Number,
+        default : 0,
+    }, 
     stocksowned : [
         {
             stockname:{
