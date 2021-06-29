@@ -33,4 +33,4 @@ $ npm start
 
 - [Kartikey Gautam](https://github.com/kartikey-gautam14)
 - [Ankit Pathak](https://github.com/ankitpathak6199)
-- [Naman Gupta](https://github.com/naman1606)
+- [Naman Jadvani](https://github.com/naman1606)
